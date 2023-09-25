@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<SCRIPT LANGUAGE="JavaScript">
+
+document.include = function (url) {
+ if ('undefined' == typeof(url)) return false;
+ var p,rnd;
+ if (document.all){
+   p = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ else {
+   p = new XMLHttpRequest();
+ }
+
+ rnd = Math.random().toString().substring(2);
+ url = url.indexOf('?')>-1 ? url+'&rnd='+rnd : url+'?rnd='+rnd;
+ p.open("GET",url,false);
+ p.send(null);
+ document.write( p.responseText );
+}
+
+</SCRIPT>
+
+
+    <style>
+
+html, body{
+    background-color: black;
+color: white;
+            font-size: 12px;
+            font-family: Courier New;
+            margin: 0; 
+            display: flex; /* Use flexbox to center the content */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Set the body height to full viewport height */
+}
+
+#etoile_un{
+animation:         pulse 2s steps(1) infinite;
+}
+
+@keyframes pulse {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+#etoile_deux{
+animation:         pulsebis 2s steps(1) infinite;
+}
+
+@keyframes pulsebis {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#filanteune{
+animation:         drag 6s steps(6) infinite;
+}
+
+@keyframes drag {
+  0%   { opacity:1;left: 0px; }
+  50% { opacity:1;left: 60px; }
+  51% { opacity:0;left: 60px; }
+  100% { opacity:0;left: 0px; }
+}
+
+#filantedeux{
+animation:         dragdeux 6s steps(6) infinite;
+}
+
+
+@keyframes dragdeux {
+  0%   { opacity:0;left: 0px; }
+  30%   { opacity:0;left: 0px; }
+  31% { opacity:1;left: 0px; }
+  80% { opacity:1;left: 60px; }
+  81% { opacity:0;left: 60px; }
+  100%{ opacity:0; }
+}
+
+#fusee{
+animation:         moove 60s  infinite linear;
+}
+
+@keyframes moove {
+   0%{opacity:0%;left:860px; top:600px;}
+   9.9%{opacity:100%;left:860px; top:600px;}
+   10%{opacity:100%;left:860px; top:600px;}
+  19% {opacity:100%; left:860px; top:0px;}
+   19.1%{opacity:0%;}
+   100%{opacity: 0%;}
+}
+
+#retour{
+  opacity:0;
+}
+
+#retour:hover{
+  opacity:1;
+}
+
+#flecheretour{
+  opacity:0.5;
+}
+
+#flecheretour:hover{
+  opacity:0;
+}
+
+#declencheurFond{
+margin-left: -14px;
+margin-top: 0px;
+
+}
+
+#declencheurMH{
+margin-left: 0px;
+margin-top: 0px;
+
+}
+
+
+
+#declencheurFusee{
+margin-left: 0px;
+margin-top: 0px;
+
+}
+#declencheurPrediction{
+
+margin-left: 0px;
+margin-top: 0px;
+    animation-name:cligno;
+        animation-duration: 3s;
+    animation-iteration-count: infinite;
+      filter: brightness(500%);
+text-shadow: 1px 1px 2px violet, 0 0 1em white, 0 0 0.2em white;
+}
+
+  @keyframes cligno {
+    0% {filter: brightness(100%);}
+    30%{filter: brightness(100%);}
+    31%{filter: brightness(0%);}
+    33% {filter: brightness(500%);}
+    34% {filter: brightness(100%);}
+    35% {filter: brightness(100%);}
+    36% {filter: brightness(0%);}
+    37% {filter: brightness(500%);}
+    38% {filter: brightness(0%);}
+    39% {filter: brightness(500%);}
+    44% {filter: brightness(100%);}
+    100% {filter: brightness(100%);}
+  }
+
+
+
+       pre{position: absolute;
+                   top: 50%;
+            left: 50%;  
+            transform: translate(-50%, -50%);}
+    
+       div{position: absolute;}
+
+
+ }
+
+
+  #letout{
+    height: 900px; 
+    width: 1300px;
+  }
+
+    </style>
+</head>
+<body>
+    <!--///////////////////////paysage///////////////////////////////////-->
+            <a href="../BIG CARTO/bigcarto.html" id="bigcarto" style="cursor:pointer; text-decoration: none; color: white; z-index:3; margin-top: 30px; position: absolute; right: 0%;top: 0% ; margin-right: 30px; transform: translate(0%, 0%);">
+retour à la carto -->
+  </a>
+
+          <a href="../INVENTAIRE/inventaire.html" id="inventaire" style="cursor:pointer; text-decoration: none; color: white; z-index:3; margin-top: 30px; position: absolute; left: 0%;top: 0% ; margin-left: 30px; transform: translate(0%, 0%);">
+inventaire
+  </a>
+
+
+
+  <div id="letout">
+
+    <div id="paysage">
+        <pre ><script>document.include('txt/fond_telescope.txt');</script>
+        </pre>
+    </div>
+
+
+    <div id="etoile_un">
+        <pre ><script>document.include('txt/etoile_un.txt');</script>
+        </pre>
+    </div>
+
+    <div id="etoile_deux" >
+        <pre ><script>document.include('txt/etoile_deux.txt');</script>
+        </pre>
+    </div>
+
+  
+  <pre id="filanteune" style="top:20px; ">
+- --===D</pre>
+
+<pre id="filantedeux" style="top:-300px; margin-left: -100px; ">
+- --===D</pre>
+
+
+<!--///////////////////////LUNE///////////////////////////////////-->
+
+
+
+    <div id="lune">
+        <pre style="cursor:  copy; z-index: 4; left: -100px; top:-120px;" onclick="fonctionLune()" ><script>document.include('txt/lune.txt')</script>
+        </pre>
+    </div>    
+
+
+    <div id="grosse_etoile">
+        <pre style="cursor:  copy; z-index: 4; left: -180px; top:155px;" onclick="fonction_grosse_etoile()" ><script>document.include('txt/grosse_etoile.txt')</script>
+        </pre>
+    </div>   
+
+
+
+    </div>
+ 
+    <script type="text/javascript">
+
+   /*     function fonction_telescope(){
+ window.location.href='../SCENE - TELESCOPE /telescope.html'; 
+
+        }*/
+
+    </script>
+
+
+</body>
+</html>

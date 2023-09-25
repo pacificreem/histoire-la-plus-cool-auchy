@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<SCRIPT LANGUAGE="JavaScript">
+
+document.include = function (url) {
+ if ('undefined' == typeof(url)) return false;
+ var p,rnd;
+ if (document.all){
+   p = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ else {
+   p = new XMLHttpRequest();
+ }
+
+ rnd = Math.random().toString().substring(2);
+ url = url.indexOf('?')>-1 ? url+'&rnd='+rnd : url+'?rnd='+rnd;
+ p.open("GET",url,false);
+ p.send(null);
+ document.write( p.responseText );
+}
+
+</SCRIPT>
+
+
+    <style>
+
+
+        body {
+            font-size: 13px;
+            font-family: Courier New;
+            margin: 0; 
+            display: flex; /* Use flexbox to center the content */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Set the body height to full viewport height */
+        }
+
+
+
+       pre{position: absolute;
+                   top: 50%;
+            left: 50%;  
+            transform: translate(-50%, -50%);}
+    
+       div{position: absolute;}
+
+
+ }
+
+
+  #letout{
+    height: 900px; 
+    width: 1300px;
+  }
+
+    </style>
+</head>
+<body>
+    <!--///////////////////////SERPENT///////////////////////////////////-->
+  
+  <div id="letout">
+
+    <div id="paysage">
+        <pre ><script>document.include('txt/fond_ciel.txt');</script>
+        </pre>
+    </div>
+
+
+    <div id="dragon" style="top: 100px; left:240px; cursor:pointer; " onclick="fonction_dragon()">
+        <pre ><script>document.include('txt/dragon.txt') ;</script>
+        </pre>
+    </div>
+
+
+    <div id="telescole" style="left:-270px; top: 50px; cursor:pointer; " onclick="fonction_telescope()">
+        <pre ><script>document.include('txt/telescope.txt');</script>
+        </pre>
+    </div>
+
+    <div id="etoile" style="left:200px; top: -260px; ;">
+        <pre ><script>document.include('txt/etoile.txt');</script>
+        </pre>
+    </div>
+
+  
+    </div>
+ 
+    <script type="text/javascript">
+
+        function fonction_telescope(){
+ window.location.href='../SCENE - TELESCOPE /telescope.html'; 
+
+        }
+
+    </script>
+
+
+</body>
+</html>

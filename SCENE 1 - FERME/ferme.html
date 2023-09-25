@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<SCRIPT LANGUAGE="JavaScript">
+
+document.include = function (url) {
+ if ('undefined' == typeof(url)) return false;
+ var p,rnd;
+ if (document.all){
+   p = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ else {
+   p = new XMLHttpRequest();
+ }
+
+ rnd = Math.random().toString().substring(2);
+ url = url.indexOf('?')>-1 ? url+'&rnd='+rnd : url+'?rnd='+rnd;
+ p.open("GET",url,false);
+ p.send(null);
+ document.write( p.responseText );
+}
+
+</SCRIPT>
+
+
+    <style>
+
+
+        body {
+            font-size: 13px;
+            font-family: Courier New;
+            margin: 0; 
+            display: flex; /* Use flexbox to center the content */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Set the body height to full viewport height */
+            width: 100vw;
+        }
+
+
+
+       pre{position: absolute;
+                   top: 50%;
+            left: 50%;  
+            transform: translate(-50%, -50%);}
+    
+       div{position: absolute;}
+
+ @keyframes tracteurmove{
+0% {left:850px;}
+20% {left:850px;}
+100% {left:100px;}
+}
+ }
+
+
+  #letout{
+    height: 900px; 
+    width: 1300px;
+ }
+
+ #page_quitter{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+    cursor: pointer;
+ }
+
+  @keyframes cochon_1{
+0%{left:-250px; top: 120px;}
+8%{left:-250px; top: 120px;}
+9%{left:-240px; top: 105px;}
+12%{left:-210px; top: 80px;}
+20%{left:-210px; top: 80px;}
+24%{left:-190px; top: 90px;}
+40%{left:-190px; top: 90px;}
+44%{left:-210px; top: 110px;}
+85%{left:-210px; top: 110px;}
+89%{left:-250px; top: 120px;}
+100%{left:-250px; top: 120px;}}
+
+
+
+  @keyframes cochon_2{
+0%{left:-140px; top: 200px;}
+19%{left:-140px; top: 200px;}
+22%{left:-180px; top: 170px;}
+30%{left:-180px; top: 170px;}
+34%{left:-210px; top: 180px;}
+50%{left:-210px; top: 180px;}
+54%{left:-160px; top: 170px;}
+75%{left:-160px; top: 170px;}
+79%{left:-140px; top: 200px;}
+100%{left:-140px; top: 200px;}}
+
+  @keyframes cochon_3{
+0%{left:320px; top: 170px;}
+15%{left:320px; top: 170px;}
+19%{left:260px; top: 180px;}
+33%{left:260px; top: 180px;}
+37%{left:290px; top: 150px;}
+67%{left:290px; top: 150px;}
+71%{left:270px; top: 110px;}
+86%{left:270px; top: 110px;}
+90%{left:320px; top: 170px;}
+100%{left:320px; top: 170px;}}
+
+    </style>
+</head>
+<body>
+
+<!--    ////////////////////////CONSTANT////////////////////   -->
+  
+  <div id="letout">
+
+    <div id="paysage">
+        <pre ><script>document.include('txt/fond_ferme.txt');</script>
+        </pre>
+    </div>
+
+
+    <div id="tracteur" style="top: 100px;   animation: tracteurmove both;
+  animation-duration: 16s; cursor: pointer;" onclick="fonction_tracteur();">
+        <pre ><script>document.include('txt/tracteur.txt');</script>
+        </pre>
+    </div>
+
+
+    <div style="left:-200px; top: -65px; background-color: white; width: 70px; height: 50px;">
+        <pre id="ane1"></pre>
+    </div>
+
+    <div style="left:-100px; top: -48px; background-color: white; width: 70px; height: 50px;">
+        <pre id="ane2"></pre>
+    </div>
+
+
+
+    <div id="cochon1" style="left:-250px; top: 120px; background-color: white; width: 70px; height: 50px; animation: cochon_1 35s steps(4) infinite;">
+        <pre ><script>document.include('txt/cochon_tete_droite.txt');</script>
+        </pre>
+    </div>
+
+    <div id="cochon2" style="left:-140px; top: 200px; background-color: white; width: 70px; height: 50px;  animation: cochon_2 35s steps(4) infinite;">
+        <pre ><script>document.include('txt/cochon_tete_gauche.txt');</script>
+        </pre>
+    </div>
+
+        <div id="cochon3" style="left:320px; top: 170px; background-color: white; width: 70px; height: 50px;  animation: cochon_3 50s steps(8) infinite;">
+        <pre ><script>document.include('txt/cochon_tete_droite.txt');</script>
+        </pre>
+    </div>
+
+
+
+
+ 
+
+
+  <!--    ////////////////////////LES POP PAGES////////////////////   -->
+
+
+
+    <div id="click_tracteur" style="display: none;">
+
+        <div id="rect_tracteur_txt" style="background-color: white; height:130px; width: 320px; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
+
+        <div id="tracteur_txt" style=" z-index: 9; ">
+            <pre><script>document.include('txt/tracteur_txt.txt');</script></pre>
+        </div>
+
+    </div>
+
+
+
+    <div id="intro" style="display: none;">
+
+        <div id="rect_intro" style="background-color: white; height:180px; width: 320px; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
+
+        <div id="tracteur_txt" style=" z-index: 9; ">
+            <pre><script>document.include('txt/intro.txt');</script></pre>
+        </div>
+
+    </div>
+
+
+<div id="page_quitter" onclick="fonction_quitter()" style="top: 50%;
+            left: 50%;  transform: translate(-50%, -50%);"></div>
+
+
+    </div>
+
+
+
+    <script type="text/javascript">
+   ///////////////////////**********///////////////////////////////////
+    ///////////////////////ANIMATION///////////////////////////////////
+        ///////////////////////******///////////////////////////////////
+
+    ///////////////////////ANE1///////////////////////////////////
+    var text_ane1 = ['txt/ane_1.txt', 'txt/ane_2.txt'];
+    var counter_ane1 = 0;
+    var preElement_ane1 = document.getElementById("ane1");
+    var textContents_ane1 = [];
+    var duration_ane1 = [4000, 500]; // Duration for each text content in milliseconds
+
+    for (var i = 0; i < text_ane1.length; i++) {
+        preloadText_ane1(text_ane1[i], i);
+    }
+
+    function preloadText_ane1(url, index) {
+        var request_ane1 = new XMLHttpRequest();
+        request_ane1.open('GET', url, true);
+        request_ane1.onreadystatechange = function () {
+            if (request_ane1.readyState === XMLHttpRequest.DONE && request_ane1.status === 200) {
+                textContents_ane1[index] = request_ane1.responseText;
+
+                if (index === 0) {
+                    // Display the content of the first file on startup
+                    preElement_ane1.textContent = textContents_ane1[0];
+                    animate_ane1();
+                }
+            }
+        };
+        request_ane1.send();
+    }
+
+    function animate_ane1() {
+        setTimeout(function() {
+            counter_ane1 = (counter_ane1 + 1) % textContents_ane1.length;
+            preElement_ane1.textContent = textContents_ane1[counter_ane1];
+            animate_ane1();
+        }, duration_ane1[counter_ane1]);
+    }
+
+
+    ///////////////////////ANE2///////////////////////////////////
+    var text_ane2 = ['txt/ane_3.txt', 'txt/ane_4.txt'];
+    var counter_ane2 = 0;
+    var preElement_ane2 = document.getElementById("ane2");
+    var textContents_ane2 = [];
+    var duration_ane2 = [6000, 5000]; // Duration for each text content in milliseconds
+
+    for (var i = 0; i < text_ane2.length; i++) {
+        preloadText_ane2(text_ane2[i], i);
+    }
+
+    function preloadText_ane2(url, index) {
+        var request_ane2 = new XMLHttpRequest();
+        request_ane2.open('GET', url, true);
+        request_ane2.onreadystatechange = function () {
+            if (request_ane2.readyState === XMLHttpRequest.DONE && request_ane2.status === 200) {
+                textContents_ane2[index] = request_ane2.responseText;
+
+                if (index === 0) {
+                    // Display the content of the first file on startup
+                    preElement_ane2.textContent = textContents_ane2[0];
+                    animate_ane2();
+                }
+            }
+        };
+        request_ane2.send();
+    }
+
+    function animate_ane2() {
+        setTimeout(function() {
+            counter_ane2 = (counter_ane2 + 1) % textContents_ane2.length;
+            preElement_ane2.textContent = textContents_ane2[counter_ane2];
+            animate_ane2();
+        }, duration_ane2[counter_ane2]);
+    }
+
+
+
+
+    ///////////////////////**********///////////////////////////////////
+    ///////////////////////FONCTION///////////////////////////////////
+        ///////////////////////******///////////////////////////////////
+
+    ///////////////////////TRACTEUR///////////////////////////////////
+
+
+
+
+        function fonction_tracteur(){
+            document.getElementById("click_tracteur").style.display = "block";
+            setTimeout(() => {  window.location.href='../SCENE 2 - CHAMPS/champs.html'; }, 5000);
+        }
+
+
+const timer_intro = setTimeout(fonction_intro, 15000);
+
+        function fonction_intro(){
+            document.getElementById("intro").style.display = "block";
+            document.getElementById("page_quitter").style.display = "block";
+        }
+
+
+        function fonction_quitter(){
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("page_quitter").style.display = "none";
+
+
+        }
+
+</script>
+
+</body>
+</html>
