@@ -106,12 +106,11 @@ inventaire
 
 
 <div id="hibou" style="display: none; cursor: pointer;">
-    <pre  style=" z-index: 5; position:absolute; left: 255px; top:-30px;" onclick="fonctionHibou()" ><script>document.include('txt/oiseau.txt')</script>
+    <pre  style=" background-color:white; z-index: 5; position:absolute; left: 255px; top:-30px;" onclick="fonctionHibou()" ><script>document.include('txt/oiseau.txt')</script>
     </pre>
 
-<div id="rectangle_hibou" style="z-index:4; position: absolute; width: 57px; height: 50px; background-color: white;  left: 230px; top:-50px;"></div>
+</div>
 
-  </div>
 
 
                 <!-- jus -->
@@ -122,12 +121,10 @@ inventaire
 
 
   <div id="jus" style="display: none; cursor: pointer;">
-    <pre style=" z-index: 5; " ><script>document.include('txt/jus.txt')</script>
+    <pre style=" z-index: 5; background-color: white;" ><script>document.include('txt/jus.txt')</script>
     </pre>
+</div>
 
-<div id="rectangle_jus" style="z-index:4; width: 405px; height: 235px; background-color: white; transform: translate(-50%, -50%); top: 50%; left: 50%; "></div>
-
-  </div>
                 <!-- manifeste_kefir -->
 
     <div id="etoile" style="left:-280px; cursor:pointer; top: 220px;" onclick="fonctionEtoile()">
@@ -137,10 +134,8 @@ inventaire
 
  
   <div id="manifeste_kefir" style="display: none; cursor: pointer;">
-    <pre style=" z-index: 5; " ><script>document.include('txt/manifeste_kefir.txt')</script>
+    <pre style="background-color: white; z-index: 5; " ><script>document.include('txt/manifeste_kefir.txt')</script>
     </pre>
-
-<div id="rectangle_manifeste_kefir" style="z-index:4; width: 605px; height: 330px; background-color: white; transform: translate(-50%, -50%); top: 50%; left: 50%; "></div>
 
   </div>
 
@@ -154,17 +149,16 @@ inventaire
 
     <div id="click_radia" style="display: none;">
 
-        <div id="rect_radia_txt" style="background-color: white; height:225px; width: 430px; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
 
-        <div id="radia_txt" style=" z-index: 9; ">
-            <pre><script>document.include('txt/message_radia.txt');</script></pre>
+        <div id="radia_txt" >
+            <pre style="background-color: white; z-index: 9; "><script>document.include('txt/message_radia.txt');</script></pre>
         </div>
 
-        <div id="bouton_radia_non" style=" z-index: 9; top: 55px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
+        <div id="bouton_radia_non" style=" z-index: 9; top: 75px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
             <button onclick="retour_foret()" style="cursor: pointer;"> je n'ai rien pour toi... </button>
         </div>
 
-        <div id="bouton_donne_modem" style=" z-index: 9; top: 55px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
+        <div id="bouton_donne_modem" style=" z-index: 9; top: 75px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
             <button onclick="donner_modem()" style="cursor: pointer;"> j'ai un modem ! </button>
         </div>
     </div>
@@ -173,13 +167,11 @@ inventaire
 
     <div id="donner_poeme" style="display: none;">
 
-        <div id="rect_radia_txt" style="background-color: white; height:225px; width: 380px ; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
-
-        <div id="radia_txt" style=" z-index: 9; ">
-            <pre><script>document.include('txt/message_merci.txt');</script></pre>
+        <div id="radia_txt">
+            <pre style="background-color: white; z-index: 9;"><script>document.include('txt/message_merci.txt');</script></pre>
         </div>
 
-        <div id="bouton_lire_poeme" style=" z-index: 9; top: 55px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
+        <div id="bouton_lire_poeme" style=" z-index: 9; top: 75px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
             <button onclick="lire_poeme()" style="cursor: pointer;"> lire le poème </button>
         </div>
 
@@ -193,10 +185,9 @@ inventaire
 
     <div id="poeme" style="display: none;">
 
-        <div id="rect_radia_txt" style="background-color: white; height:435px; width: 460px; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
 
-        <div id="radia_txt" style=" z-index: 9; ">
-            <pre><script>document.include('txt/poeme_radia.txt');</script></pre>
+        <div id="radia_txt">
+            <pre style="background-color: white; z-index: 9;"><script>document.include('txt/poeme_radia.txt');</script></pre>
         </div>
 
     </div>
@@ -207,10 +198,9 @@ inventaire
 
     <div id="radia_heureuse" style="display: none;">
 
-        <div id="rect_radia_heureuse_txt" style="background-color: white; height:195px; width: 400px; z-index: 8; transform: translate(-50%, -50%); top: 50%; left: 50%;"></div>
 
-        <div id="radia_txt" style=" z-index: 9; ">
-            <pre><script>document.include('txt/radia_heureuse.txt');</script></pre>
+        <div id="radia_txt" >
+            <pre style="background-color: white; z-index: 9; "><script>document.include('txt/radia_heureuse.txt');</script></pre>
         </div>
 
 
