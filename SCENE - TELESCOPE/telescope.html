@@ -33,10 +33,11 @@ color: white;
             font-size: 12px;
             font-family: Courier New;
             margin: 0; 
-            display: flex; /* Use flexbox to center the content */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-            height: 100vh; /* Set the body height to full viewport height */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            overflow: hidden;
 }
 
 #etoile_un{
@@ -88,10 +89,10 @@ animation:         moove 60s  infinite linear;
 }
 
 @keyframes moove {
-   0%{opacity:0%;left:860px; top:600px;}
-   9.9%{opacity:100%;left:860px; top:600px;}
-   10%{opacity:100%;left:860px; top:600px;}
-  19% {opacity:100%; left:860px; top:0px;}
+   0%{opacity:0%; top:0px;}
+   9.9%{opacity:0%; top:160px;}
+   10%{opacity:100%;top:160px;}
+  19% {opacity:100%; top:-160px;}
    19.1%{opacity:0%;}
    100%{opacity: 0%;}
 }
@@ -192,7 +193,7 @@ inventaire
   <div id="letout">
 
     <div id="paysage">
-        <pre ><script>document.include('txt/fond_telescope.txt');</script>
+        <pre style="z-index: 0"><script>document.include('txt/fond_telescope.txt');</script>
         </pre>
     </div>
 
@@ -205,6 +206,7 @@ inventaire
     <div id="etoile_deux" >
         <pre ><script>document.include('txt/etoile_deux.txt');</script>
         </pre>
+        <pre onclick="carte_ciel()" style="left:-320px; top:-80px; cursor: pointer;">@</pre>
     </div>
 
   
@@ -220,15 +222,92 @@ inventaire
 
 
     <div id="lune">
-        <pre style="cursor:  copy; z-index: 4; left: -100px; top:-120px;" onclick="fonctionLune()" ><script>document.include('txt/lune.txt')</script>
+        <pre style="cursor:  pointer; z-index: 4; left: -100px; top:-120px;" onclick="fonctionLune()" ><script>document.include('txt/lune.txt')</script>
         </pre>
     </div>    
 
 
     <div id="grosse_etoile">
-        <pre style="cursor:  copy; z-index: 4; left: -180px; top:155px;" onclick="fonction_grosse_etoile()" ><script>document.include('txt/grosse_etoile.txt')</script>
+        <pre style="cursor:  pointer; z-index: 4; left: -180px; top:155px;" onclick="grosse_etoile()" ><script>document.include('txt/grosse_etoile.txt')</script>
         </pre>
     </div>   
+
+                  <!-- fusee -->
+
+    <div id="fusee">
+        <pre onclick="fonction_fusee()" style=" z-index: 7; left:285px; top:0px; cursor: pointer;"><script>document.include('txt/fusee.txt')</script>
+        </pre>
+
+    </div>   
+
+<!--///////////////////////PAGE POP UP///////////////////////////////////-->
+
+<!--///////////////////////MARGARET///////////////////////////////////-->
+
+<div id="citation_margaret" style=" display:none;">
+  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/citation_margaret.txt')</script></pre>
+</div>
+
+
+
+<div id="message_margaret" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/message_margaret.txt')</script></pre>
+</div>
+
+    <button id="bouton_pas_de_poeme" onclick="tout_fermer()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:220px; transform: translate(-50%, -50%);">heu... je n'ai rien sous la main...</button>
+
+    <button id="bouton_donner_poeme" onclick="donner_poeme()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:170px; transform: translate(-50%, -50%);">je connais un poème!</button>
+
+
+<div id="message_margaret_heureuse" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/message_margaret_heureuse.txt')</script></pre>
+</div>
+
+<div id="margaret_merci" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/margaret_merci.txt')</script></pre>
+</div>
+
+
+<!--///////////////////////PREDICTION///////////////////////////////////-->
+
+<div id="prediction0" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction0.txt')</script></pre>
+</div>
+
+<div id="prediction1" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction1.txt')</script></pre>
+</div>
+
+<div id="prediction2" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction2.txt')</script></pre>
+</div>
+
+<div id="prediction3" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction3.txt')</script></pre>
+</div>
+
+<div id="prediction4" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction4.txt')</script></pre>
+</div>
+
+<div id="prediction5" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/prediction5.txt')</script></pre>
+</div>
+
+
+
+<!--///////////////////////CARTE CIEL///////////////////////////////////-->
+
+<div id="carte_gagnante" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/carte_gagnante.txt')</script></pre>
+</div>
+
+<!--///////////////////////FERMER PAGE///////////////////////////////////-->
+
+
+  <div id="tout_fermer" style="height:100vh; width: 100vw; z-index: 20; cursor: pointer; transform: translate(-50%, -50%); top: 50%; left: 50%; display: none;" onclick="tout_fermer()"></div>
+
+
 
 
 
@@ -236,10 +315,112 @@ inventaire
  
     <script type="text/javascript">
 
-   /*     function fonction_telescope(){
- window.location.href='../SCENE - TELESCOPE /telescope.html'; 
+       function fonction_fusee(){
+  if(localStorage.getItem("citation_margaret") !== "ok"){
+document.getElementById("citation_margaret").style.display = "block";
+localStorage.setItem("citation_margaret", "ok");
+document.getElementById("tout_fermer").style.display = "block";
+}
 
-        }*/
+else{
+  document.getElementById("citation_margaret").style.display = "none";
+    document.getElementById("fusee").style.cursor = "pointer";
+}
+}
+
+
+  ///////////////////////////LUNE//////////////////////////////////////
+
+
+function fonctionLune(){
+  if(localStorage.getItem("poeme_radia") == "ok"){
+document.getElementById("message_margaret").style.display = "block";
+document.getElementById("message_margaret_heureuse").style.display = "none";   
+document.getElementById("bouton_donner_poeme").style.display = "block";  
+document.getElementById("bouton_pas_de_poeme").style.display = "none";   
+
+} else if(localStorage.getItem("poeme_radia") == "donne") {
+document.getElementById("message_margaret_heureuse").style.display = "block"; 
+document.getElementById("tout_fermer").style.display = "block"; 
+document.getElementById("message_margaret").style.display = "none";
+document.getElementById("margaret_merci").style.display = "none";
+document.getElementById("bouton_pas_de_poeme").style.display = "none";
+}else{
+document.getElementById("message_margaret").style.display = "block";
+document.getElementById("bouton_pas_de_poeme").style.display = "block";   
+document.getElementById("margaret_merci").style.display = "none";
+}
+}
+
+
+function donner_poeme(){
+document.getElementById("margaret_merci").style.display = "block";
+document.getElementById("bouton_pas_de_poeme").style.display = "none";
+document.getElementById("bouton_donner_poeme").style.display = "none";
+document.getElementById("message_margaret").style.display = "none";
+document.getElementById("tout_fermer").style.display = "block";  
+localStorage.setItem("poeme_radia", "donne"); 
+}
+
+
+        function tout_fermer(){
+            document.getElementById("citation_margaret").style.display = "none";
+            document.getElementById("message_margaret").style.display = "none"; 
+            document.getElementById("message_margaret_heureuse").style.display = "none";   
+            document.getElementById("bouton_pas_de_poeme").style.display = "none";  
+            document.getElementById("tout_fermer").style.display = "none";   
+            document.getElementById("margaret_merci").style.display = "none";
+            document.getElementById("prediction0").style.display="none";
+            document.getElementById("prediction1").style.display="none";
+            document.getElementById("prediction2").style.display="none";
+            document.getElementById("prediction3").style.display="none";
+            document.getElementById("prediction4").style.display="none";
+            document.getElementById("prediction5").style.display="none";
+            document.getElementById("carte_gagnante").style.display="none";
+
+
+}
+
+
+        function grosse_etoile(){
+
+  var tirage = Math.floor(Math.random() * 5);
+
+if(tirage == 0){
+document.getElementById("prediction0").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}else if(tirage == 1){
+document.getElementById("prediction1").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}else if(tirage == 2){
+document.getElementById("prediction2").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}else if(tirage == 3){
+document.getElementById("prediction3").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}else if(tirage == 4){
+document.getElementById("prediction4").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}else{
+document.getElementById("prediction5").style.display="block";
+document.getElementById("tout_fermer").style.display = "block";  
+
+}
+
+}
+
+
+
+        function carte_ciel(){
+            document.getElementById("carte_gagnante").style.display = "block";
+            document.getElementById("tout_fermer").style.display = "block"; 
+          }
+
 
     </script>
 
