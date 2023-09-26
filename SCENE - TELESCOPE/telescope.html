@@ -179,9 +179,13 @@ text-shadow: 1px 1px 2px violet, 0 0 1em white, 0 0 0.2em white;
     </style>
 </head>
 <body>
+
+
+
+
     <!--///////////////////////paysage///////////////////////////////////-->
-            <a href="../BIG CARTO/bigcarto.html" id="bigcarto" style="cursor:pointer; text-decoration: none; color: white; z-index:3; margin-top: 30px; position: absolute; right: 0%;top: 0% ; margin-right: 30px; transform: translate(0%, 0%);">
-retour à la carto -->
+            <a href="../SCENE - DAME_DU_CIEL/dame_du_ciel.html" id="bigcarto" style="cursor:pointer; text-decoration: none; color: white; z-index:3; margin-top: 30px; position: absolute; right: 0%;top: 0% ; margin-right: 30px; transform: translate(0%, 0%);">
+quitter le téléscope -->
   </a>
 
           <a href="../INVENTAIRE/inventaire.html" id="inventaire" style="cursor:pointer; text-decoration: none; color: white; z-index:3; margin-top: 30px; position: absolute; left: 0%;top: 0% ; margin-left: 30px; transform: translate(0%, 0%);">
@@ -254,6 +258,8 @@ inventaire
  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/message_margaret.txt')</script></pre>
 </div>
 
+    <button id="bouton_prendre_manifeste" onclick="prendre_manifeste_cyborg()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:115px; transform: translate(-50%, -50%);">trop cool, merci!</button>
+
     <button id="bouton_pas_de_poeme" onclick="tout_fermer()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:220px; transform: translate(-50%, -50%);">heu... je n'ai rien sous la main...</button>
 
     <button id="bouton_donner_poeme" onclick="donner_poeme()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:170px; transform: translate(-50%, -50%);">je connais un poème!</button>
@@ -267,6 +273,20 @@ inventaire
  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/margaret_merci.txt')</script></pre>
 </div>
 
+
+<div id="manifeste_cyborg" style=" display:none;" onclick="manifeste_cyborg_inventaire()">
+  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/manifeste_cyborg.txt')</script></pre>
+</div>
+
+
+<div id="phrase_invisible" style=" display:none;">
+  <pre style="z-index: 4; color: black; top:105px; cursor: zoom-in;"><script>document.include('txt/phrase_invisible.txt')</script></pre>
+</div>
+
+
+<div id="margaret_explique" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/margaret_explique.txt')</script></pre>
+</div>
 
 <!--///////////////////////PREDICTION///////////////////////////////////-->
 
@@ -356,13 +376,31 @@ document.getElementById("margaret_merci").style.display = "none";
 function donner_poeme(){
 document.getElementById("margaret_merci").style.display = "block";
 document.getElementById("bouton_pas_de_poeme").style.display = "none";
+document.getElementById("bouton_prendre_manifeste").style.display = "block";
 document.getElementById("bouton_donner_poeme").style.display = "none";
 document.getElementById("message_margaret").style.display = "none";
-document.getElementById("tout_fermer").style.display = "block";  
+document.getElementById("tout_fermer").style.display = "none";  
 localStorage.setItem("poeme_radia", "donne"); 
 }
 
 
+
+function prendre_manifeste_cyborg(){
+localStorage.setItem("manifeste_cyborg", "ok");   
+document.getElementById("manifeste_cyborg").style.display = "block";
+document.getElementById("phrase_invisible").style.display = "block";
+document.getElementById("margaret_merci").style.display = "none";
+document.getElementById("bouton_prendre_manifeste").style.display = "none";
+
+}
+
+
+function manifeste_cyborg_inventaire(){
+document.getElementById("manifeste_cyborg").style.display = "none";
+document.getElementById("phrase_invisible").style.display = "none";
+document.getElementById("margaret_explique").style.display = "block";  
+document.getElementById("tout_fermer").style.display = "block";  
+}
         function tout_fermer(){
             document.getElementById("citation_margaret").style.display = "none";
             document.getElementById("message_margaret").style.display = "none"; 
@@ -377,7 +415,7 @@ localStorage.setItem("poeme_radia", "donne");
             document.getElementById("prediction4").style.display="none";
             document.getElementById("prediction5").style.display="none";
             document.getElementById("casque_fatoumata").style.display="none";
-
+            document.getElementById("margaret_explique").style.display = "none";  
 
 }
 
@@ -417,9 +455,15 @@ document.getElementById("tout_fermer").style.display = "block";
 
 
         function casque_fatoumata(){
+      if(localStorage.getItem("casque_fatoumata") == "ok"){
+            document.getElementById("etoile_deux").style.cursor = "auto";   
+          }else{
             document.getElementById("casque_fatoumata").style.display = "block";
             document.getElementById("tout_fermer").style.display = "block"; 
+            localStorage.setItem("casque_fatoumata", "ok"); 
+
           }
+        }
 
 
     </script>
