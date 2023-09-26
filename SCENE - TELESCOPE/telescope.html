@@ -206,7 +206,7 @@ inventaire
     <div id="etoile_deux" >
         <pre ><script>document.include('txt/etoile_deux.txt');</script>
         </pre>
-        <pre onclick="carte_ciel()" style="left:-320px; top:-80px; cursor: pointer;">@</pre>
+        <pre onclick="casque_fatoumata()" style="left:-320px; top:-80px; cursor: pointer;">@</pre>
     </div>
 
   
@@ -298,8 +298,8 @@ inventaire
 
 <!--///////////////////////CARTE CIEL///////////////////////////////////-->
 
-<div id="carte_gagnante" style=" display:none;">
- <pre style="z-index: 4; background-color: black; "><script>document.include('txt/carte_gagnante.txt')</script></pre>
+<div id="casque_fatoumata" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/casque_fatoumata.txt')</script></pre>
 </div>
 
 <!--///////////////////////FERMER PAGE///////////////////////////////////-->
@@ -376,7 +376,7 @@ localStorage.setItem("poeme_radia", "donne");
             document.getElementById("prediction3").style.display="none";
             document.getElementById("prediction4").style.display="none";
             document.getElementById("prediction5").style.display="none";
-            document.getElementById("carte_gagnante").style.display="none";
+            document.getElementById("casque_fatoumata").style.display="none";
 
 
 }
@@ -416,8 +416,8 @@ document.getElementById("tout_fermer").style.display = "block";
 
 
 
-        function carte_ciel(){
-            document.getElementById("carte_gagnante").style.display = "block";
+        function casque_fatoumata(){
+            document.getElementById("casque_fatoumata").style.display = "block";
             document.getElementById("tout_fermer").style.display = "block"; 
           }
 
