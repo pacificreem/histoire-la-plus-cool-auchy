@@ -37,6 +37,7 @@ document.include = function (url) {
             align-items: center; /* Center content vertically */
             height: 100vh; /* Set the body height to full viewport height */
             width: 100vw;
+            overflow: hidden;
         }
 
 
@@ -54,6 +55,7 @@ document.include = function (url) {
 100% {left:100px;}
 }
  }
+
 
 
   #letout{
@@ -82,7 +84,26 @@ document.include = function (url) {
 89%{left:-250px; top: 120px;}
 100%{left:-250px; top: 120px;}}
 
+ @keyframes cochon_endormi_1{
+0% {opacity:0;}
+29% {opacity:0;}
+30% {opacity: 1;}
+100% {opacity: 1;}
+}
 
+ @keyframes cochon_endormi_2{
+0% {opacity:0;}
+39% {opacity:0;}
+40% {opacity: 1;}
+100% {opacity: 1;}
+}
+ 
+  @keyframes cochon_endormi_3{
+0% {opacity:0;}
+49% {opacity:0;}
+50% {opacity: 1;}
+100% {opacity: 1;}
+}
 
   @keyframes cochon_2{
 0%{left:-140px; top: 200px;}
@@ -129,33 +150,53 @@ document.include = function (url) {
     </div>
 
 
-    <div style="left:-200px; top: -65px; background-color: white; width: 70px; height: 50px;">
-        <pre id="ane1"></pre>
+    <div style="cursor: pointer;left:-200px; top: -65px;" onclick="nettoyer()">
+        <pre id="ane1" style="background-color:white;"></pre>
     </div>
 
-    <div style="left:-100px; top: -48px; background-color: white; width: 70px; height: 50px;">
-        <pre id="ane2"></pre>
+    <div style="cursor: pointer;left:-100px; top: -48px;" onclick="nettoyer()">
+        <pre id="ane2" style="background-color:white;"></pre>
     </div>
 
 
 
-    <div id="cochon1" style="left:-250px; top: 120px; background-color: white; width: 70px; height: 50px; animation: cochon_1 35s steps(4) infinite;">
-        <pre ><script>document.include('txt/cochon_tete_droite.txt');</script>
-        </pre>
-    </div>
-
-    <div id="cochon2" style="left:-140px; top: 200px; background-color: white; width: 70px; height: 50px;  animation: cochon_2 35s steps(4) infinite;">
-        <pre ><script>document.include('txt/cochon_tete_gauche.txt');</script>
-        </pre>
-    </div>
-
-        <div id="cochon3" style="left:320px; top: 170px; background-color: white; width: 70px; height: 50px;  animation: cochon_3 50s steps(8) infinite;">
-        <pre ><script>document.include('txt/cochon_tete_droite.txt');</script>
+        <div id="pommier" style="left:200px; top: -30px; cursor: pointer;" onclick="pommier()">
+        <pre ><script>document.include('txt/pommier.txt');</script>
         </pre>
     </div>
 
 
+    <div id="etoile" style="left:370px; top: -70px; cursor: pointer;" onclick="os()">
+        <pre >*</pre>
+    </div>
 
+
+  <!--    ////////////////////////COCHON////////////////////   -->
+
+
+    <div id="cochon1" style="left:-250px; top: 120px; ; animation: cochon_1 35s steps(4) infinite;">
+        <pre style="background-color:white;"><script>document.include('txt/cochon_tete_droite.txt');</script>
+        </pre>
+    </div>
+
+    <div id="cochon2" style="left:-140px; top: 200px; animation: cochon_2 35s steps(4) infinite;">
+        <pre style="background-color:white;"><script>document.include('txt/cochon_tete_gauche.txt');</script>
+        </pre>
+    </div>
+
+        <div id="cochon3" style="display:none; left:320px; top: 170px; animation: cochon_3 50s steps(8) infinite;">
+        <pre style="background-color:white;"><script>document.include('txt/cochon_tete_droite.txt');</script>
+        </pre>
+    </div>
+
+
+        <div id="cochon_endormi" onclick="cochon_endormi()" style="cursor: pointer; left:320px; top: 170px; ">
+        <pre style="background-color:white;"><script>document.include('txt/cochon_endormi.txt');</script>
+        </pre>
+        <pre style="top: -17px; left: 81px; animation: cochon_endormi_1 5s infinite">Z</pre>
+        <pre style="top: -2px; left: 103px; animation: cochon_endormi_2 5s infinite">z</pre>
+        <pre style="top: -12px; left: 120px; animation: cochon_endormi_3 5s infinite">z</pre>
+    </div>
 
  
 
@@ -179,6 +220,32 @@ document.include = function (url) {
         </div>
 
     </div>
+
+
+<div id="cochon_reveille" style=" display:none; cursor: pointer;">
+ <pre style="z-index: 4; background-color: white; "><script>document.include('txt/cochon_reveille.txt')</script></pre>
+</div>
+
+
+<div id="pomme" style=" display:none;">
+ <pre style="z-index: 4; background-color: white; "><script>document.include('txt/pomme.txt')</script></pre>
+</div>
+
+
+<div id="nettoyer" style=" display:none;">
+ <pre style="z-index: 4; background-color: white; "><script>document.include('txt/nettoyer.txt')</script></pre>
+</div>
+
+<div id="propre" style=" display:none;">
+ <pre style="z-index: 4; background-color: white; "><script>document.include('txt/propre.txt')</script></pre>
+</div>
+
+<div id="os" style=" display:none;">
+ <pre style="z-index: 4; background-color: white; "><script>document.include('txt/os.txt')</script></pre>
+</div>
+
+
+
 
 
 <div id="page_quitter" onclick="fonction_quitter()" style="top: 50%;
@@ -293,10 +360,74 @@ const timer_intro = setTimeout(fonction_intro, 15000);
         }
 
 
+
+
+
+
+
+    ///////////////////////COCHON///////////////////////////////////
+
+function cochon_endormi(){
+document.getElementById("cochon3").style.display= "block";
+document.getElementById("page_quitter").style.display = "block";    
+document.getElementById("cochon_reveille").style.display= "block";
+document.getElementById("cochon_endormi").style.display= "none";
+} 
+
+
+    ///////////////////////POMMIER///////////////////////////////////
+
+function pommier(){
+document.getElementById("pomme").style.display= "block";
+document.getElementById("page_quitter").style.display = "block";  
+} 
+
+
+
+    ///////////////////////OS///////////////////////////////////
+
+function os(){
+      if(localStorage.getItem("os") == "ok"){
+            document.getElementById("etoile").style.cursor = "auto";   
+          }else{
+            document.getElementById("os").style.display = "block";
+            document.getElementById("page_quitter").style.display = "block"; 
+            localStorage.setItem("os", "ok"); 
+
+          }
+        }
+
+
+
+    ///////////////////////nettoyer///////////////////////////////////
+
+function nettoyer(){
+      if(localStorage.getItem("nettoyer") == "ok"){
+            document.getElementById("propre").style.display = "block";   
+            document.getElementById("page_quitter").style.display = "block"; 
+
+          }else{
+            document.getElementById("nettoyer").style.display = "block";
+            document.getElementById("page_quitter").style.display = "block"; 
+            localStorage.setItem("nettoyer", "ok"); 
+
+          }
+        }
+
+
+
+
+   ///////////////////////QUITTER///////////////////////////////////
+
+
         function fonction_quitter(){
             document.getElementById("intro").style.display = "none";
             document.getElementById("page_quitter").style.display = "none";
-
+            document.getElementById("cochon_reveille").style.display= "none";
+            document.getElementById("pomme").style.display= "none";
+            document.getElementById("os").style.display= "none";
+            document.getElementById("nettoyer").style.display= "none";
+            document.getElementById("propre").style.display= "none";
 
         }
 

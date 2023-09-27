@@ -93,12 +93,26 @@ document.include = function (url) {
 100%{left:-100px; top: -65px;}}
  
 
+@keyframes envol {
+  0%   { margin-left: 0px; }
+  10%  { margin-left: 200px; margin-top: -110px;}
+  17%  { margin-left: 350px; margin-top: -80px;}
+  25%  { margin-left: 500px; margin-top: -40px;}
+  32%  { margin-left: 600px; margin-top: -100px;}
+  50% { margin-left: 920px; margin-top: -70px;}
+  60%  { margin-left: 600px; margin-top: -100px;}
+  67%  { margin-left: 500px; margin-top: -40px;}
+  70%  { margin-left: 350px; margin-top: -80px;}
+  73%  { margin-left: 200px; margin-top: -110px;}
+  100% { margin-left: 0px; margin-top: -70px;}
+}
 
  @keyframes tracteurmove{
 from {left:-700px;}
 to {left:-150px;}
 }
  }
+
 
 
 
@@ -126,16 +140,22 @@ to {left:-150px;}
         <pre><script>document.include('txt/cercle.txt');</script></pre>
     </div>
 
+    <div id="moulin" style="left:-290px; top: -195px; cursor: pointer;" onclick="moulin();">
+        <pre><script>document.include('txt/moulin.txt');</script></pre>
+    </div>
+
 
     <div id="tracteur" style="left:-800px; top: 110px;   animation: tracteurmove both; animation-duration: 6s; cursor: pointer;" onclick="fonction_retour();">
         <pre><script>document.include('txt/tracteur.txt');</script></pre>
     </div>
 
-    <div style="left:-270px; top: 200px;">
+    <div style="left:-270px; top: 200px; cursor: pointer;" onclick="oeuf()">
         <pre id="canard1"></pre>
     </div>
 
-    <div style="left:-200px; top: 220px;"><pre id="canard2"></pre></div>
+    <div style="left:-200px; top: 220px; cursor: pointer;" onclick="oeuf()">
+        <pre id="canard2"></pre>
+    </div>
 
     <div id="mouton1" style="left:-180px; top: -50px; animation: saute_mouton_1 step-start infinite; animation-duration: 15s; ">
         <pre><script>document.include('txt/mouton_tete_droite.txt');</script></pre>
@@ -147,14 +167,29 @@ to {left:-150px;}
 
     </div>
 
-        <div style="left:350px; top: 195px;">
-        <pre id="chevre"></pre></script>
-        </pre>
-
-
+    <div style="left:350px; top: 195px;">
+        <pre id="chevre"></pre>
     </div>
  
 
+    <div style="left:-333px; top: -283px;">
+        <pre id="fumee" style="display:none;"></pre>
+    </div>
+
+    <div id="graine" style="left:320px; top: -75px; cursor: pointer;" onclick="graine()">
+        <pre><script>document.include('txt/graine.txt');</script></pre>
+    </div>
+
+
+
+
+
+                <!-- oiseau -->
+
+    <div style="cursor: pointer; left:-450px; top: -205px; animation:envol 40s steps(40) infinite; animation-timing-function: linear; " onclick="fonction_oiseau()">
+        <pre id="oiseau" style="background-color: white; "></pre>
+     
+    </div>
 
 
 
@@ -188,7 +223,24 @@ to {left:-150px;}
       </div>
 
 
+    <div id="ksj_ciel" style="display: none;">
+            <pre style=" z-index: 9; background-color: white; margin: 7px;"><script>document.include('txt/ksj_ciel.txt');</script></pre>
+    </div>
 
+
+    <div id="activer_moulin" style="display: none;">
+            <pre style=" z-index: 9; background-color: white; margin: 7px;"><script>document.include('txt/activer_moulin.txt');</script></pre>
+    </div>
+
+
+        <div id="oeuf" style="display: none;">
+            <pre style=" z-index: 9; background-color: white; margin: 7px;"><script>document.include('txt/oeuf.txt');</script></pre>
+    </div>
+
+
+            <div id="sac_graine" style="display: none;">
+            <pre style=" z-index: 9; background-color: white; margin: 7px;"><script>document.include('txt/sac_graine.txt');</script></pre>
+    </div>
 
 
 
@@ -205,6 +257,12 @@ to {left:-150px;}
 
       </div>
 
+
+
+<!--///////////////////////FERMER PAGE///////////////////////////////////-->
+
+
+  <div id="tout_fermer" style="height:100vh; width: 100vw; z-index: 20; cursor: pointer; transform: translate(-50%, -50%); top: 50%; left: 50%; display: none;" onclick="tout_fermer()"></div>
 
   </div>
 
@@ -263,6 +321,7 @@ to {left:-150px;}
 
         // Start the animation after all text files are preloaded
         animate_canard1();
+
 
 
 
@@ -392,10 +451,135 @@ to {left:-150px;}
 
 
 
+    ///////////////////////oiseau///////////////////////////////////
+    var text_oiseau = ['txt/oiseau_1.txt', 'txt/oiseau_2.txt'];
+    var counter_oiseau = 0;
+    var preElement_oiseau = document.getElementById("oiseau");
+    var textContents_oiseau = [];
+    var duration_oiseau = [250, 250]; // Duration for each text content in milliseconds
+
+    for (var i = 0; i < text_oiseau.length; i++) {
+        preloadText_oiseau(text_oiseau[i], i);
+    }
+
+    function preloadText_oiseau(url, index) {
+        var request_oiseau = new XMLHttpRequest();
+        request_oiseau.open('GET', url, true);
+        request_oiseau.onreadystatechange = function () {
+            if (request_oiseau.readyState === XMLHttpRequest.DONE && request_oiseau.status === 200) {
+                textContents_oiseau[index] = request_oiseau.responseText;
+
+                if (index === 0) {
+                    // Display the content of the first file on startup
+                    preElement_oiseau.textContent = textContents_oiseau[0];
+                    animate_oiseau();
+                }
+            }
+        };
+        request_oiseau.send();
+    }
+
+    function animate_oiseau() {
+        setTimeout(function() {
+            counter_oiseau = (counter_oiseau + 1) % textContents_oiseau.length;
+            preElement_oiseau.textContent = textContents_oiseau[counter_oiseau];
+            animate_oiseau();
+        }, duration_oiseau[counter_oiseau]);
+    }
+
+
+    ///////////////////////fumee///////////////////////////////////
+    var text_fumee = ['txt/fumee_1.txt', 'txt/fumee_2.txt'];
+    var counter_fumee = 0;
+    var preElement_fumee = document.getElementById("fumee");
+    var textContents_fumee = [];
+    var duration_fumee = [750, 750]; // Duration for each text content in milliseconds
+
+    for (var i = 0; i < text_fumee.length; i++) {
+        preloadText_fumee(text_fumee[i], i);
+    }
+
+    function preloadText_fumee(url, index) {
+        var request_fumee = new XMLHttpRequest();
+        request_fumee.open('GET', url, true);
+        request_fumee.onreadystatechange = function () {
+            if (request_fumee.readyState === XMLHttpRequest.DONE && request_fumee.status === 200) {
+                textContents_fumee[index] = request_fumee.responseText;
+
+                if (index === 0) {
+                    // Display the content of the first file on startup
+                    preElement_fumee.textContent = textContents_fumee[0];
+                    animate_fumee();
+                }
+            }
+        };
+        request_fumee.send();
+    }
+
+    function animate_fumee() {
+        setTimeout(function() {
+            counter_fumee = (counter_fumee + 1) % textContents_fumee.length;
+            preElement_fumee.textContent = textContents_fumee[counter_fumee];
+            animate_fumee();
+        }, duration_fumee[counter_fumee]);
+    }
+
+
+
+
+
+
 
     ///////////////////////**********///////////////////////////////////
     ///////////////////////FONCTION///////////////////////////////////
         ///////////////////////******///////////////////////////////////
+
+
+function fonction_oiseau(){
+document.getElementById("ksj_ciel").style.display = "block";
+document.getElementById("tout_fermer").style.display = "block";
+    }
+
+
+function moulin(){
+if (sessionStorage.getItem("moulin") == "ok"){
+            document.getElementById("moulin").style.cursor = "auto";
+
+}else{
+document.getElementById("fumee").style.display = "block";
+document.getElementById("tout_fermer").style.display = "block";
+document.getElementById("activer_moulin").style.display = "block";
+sessionStorage.setItem("moulin", "ok");}
+   }
+
+
+function oeuf(){
+if (sessionStorage.getItem("oeuf") == "ok"){
+            document.getElementById("canard1").style.cursor = "auto";
+            document.getElementById("canard2").style.cursor = "auto";
+}else{
+document.getElementById("oeuf").style.display = "block";
+document.getElementById("tout_fermer").style.display = "block";
+sessionStorage.setItem("oeuf", "ok");}
+   }
+
+
+
+
+function graine(){
+if (sessionStorage.getItem("graine") == "ok"){
+            document.getElementById("graine").style.cursor = "auto";
+
+}else{
+document.getElementById("tout_fermer").style.display = "block";
+document.getElementById("sac_graine").style.display = "block";
+sessionStorage.setItem("graine", "ok");}
+   }
+
+
+
+
+
 
     ///////////////////////CERCLE///////////////////////////////////
 
@@ -411,6 +595,8 @@ to {left:-150px;}
             document.getElementById("click_cercle").style.display = "none";
             document.getElementById("click_ferme").style.display = "none";
         }
+
+
 
 
     ///////////////////////PORTAIL///////////////////////////////////
@@ -433,6 +619,14 @@ to {left:-150px;}
 
 
 
+
+        function tout_fermer(){
+            document.getElementById("ksj_ciel").style.display = "none";  
+            document.getElementById("tout_fermer").style.display = "none";  
+document.getElementById("activer_moulin").style.display = "none";
+document.getElementById("sac_graine").style.display = "none";
+document.getElementById("oeuf").style.display = "none";
+}
 
 
     </script>
