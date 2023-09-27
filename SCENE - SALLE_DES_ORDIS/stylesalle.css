@@ -1,0 +1,76 @@
+html, body{
+
+ /* margin: 0px;
+  margin-left: 50vw;
+  margin-top: 26px;
+  transform: translateX(-720px);*/
+-webkit-animation: pulse 30s steps(1) infinite;
+-moz-animation:    pulse 30s steps(1) infinite;
+-o-animation:      pulse 30s steps(1) infinite;
+animation:         pulse 30s steps(1) infinite;
+}
+
+
+#letoutrouge{
+-webkit-animation: blop 30s steps(1) infinite;
+-moz-animation:    blop 30s steps(1) infinite;
+-o-animation:      blop 30s steps(1) infinite;
+animation:         blop 30s steps(1) infinite;
+}
+
+@-webkit-keyframes pulse {
+  0%   { color:black; background-color: white; }
+  97% { color:white; background-color: blue; }
+}
+@-moz-keyframes pulse {
+  0%   { color:black; background-color: white; }
+  97% { color:white; background-color: blue; }
+}
+@-o-keyframes pulse {
+  0%   { color:black; background-color: white; }
+  97% { color:white; background-color: blue; }
+}
+@keyframes pulse {
+  0%   { color:black; background-color: white; }
+  97% { color:white; background-color: blue; }
+}
+
+
+
+@-webkit-keyframes blop {
+  0%   { opacity:0;}
+  98% { opacity:1;right:0px; top:0px;}
+  98.1% {right:15px; top:-5px;}
+  99%{opacity:0;}
+  99.2%{opacity:1;}
+    99.4%{opacity:0;}
+  99.6%{opacity:1;}
+
+}
+@-moz-keyframes blop {
+  0%   { opacity:0;}
+  98% { opacity:1;right:0px; top:0px;}
+  98.1% {right:15px; top:-5px;}
+  99%{opacity:0;}
+  99.2%{opacity:1;}
+    99.4%{opacity:0;}
+  99.6%{opacity:1;}
+}
+@-o-keyframes blop {
+  0%   { opacity:0;}
+  98% { opacity:1;right:0px; top:0px;}
+  98.1% {right:15px; top:-5px;}
+  99%{opacity:0;}
+  99.2%{opacity:1;}
+    99.4%{opacity:0;}
+  99.6%{opacity:1;}
+}
+@keyframes blop {
+  0%   { opacity:0;}
+  98% { opacity:1;right:0px; top:0px;}
+  98.1% {right:15px; top:-5px;}
+  99%{opacity:0;}
+  99.2%{opacity:1;}
+    99.4%{opacity:0;}
+  99.6%{opacity:1;}
+}
