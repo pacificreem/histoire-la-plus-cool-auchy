@@ -24,8 +24,8 @@
 
         @keyframes pied_drop{
 		0% {margin-top:-600px;}
-		80% {margin-top:-600px;}
-		95% {margin-top:-200px;}
+		90% {margin-top:-600px;}
+		98% {margin-top:-200px;}
 		100% {margin-top:-200px;}
 		}
 
@@ -36,13 +36,7 @@
 
 		@keyframes arene_shake{
 		0% {margin-top:0px; margin-left:0px;}
-		88% {margin-top:0px; margin-left:0px;}
-		89% {margin-top:5px; margin-left:8px;}
-		90% {margin-top:-2px; margin-left:-6px;}
-		91% {margin-top:0px; margin-left:0px;}
-		92% {margin-top:-6px; margin-left:-3px;}
-		93% {margin-top:10px; margin-left:3px;}
-		94% {margin-top:-2px; margin-left:-6px;}
+		94% {margin-top:0px; margin-left:0px;}
 		95% {margin-top:5px; margin-left:8px;}
 		96% {margin-top:-5px; margin-left:2px;}
 		97% {margin-top:-2px; margin-left:-6px;}
@@ -53,8 +47,8 @@
 
 		@keyframes envol_nn {
   		0%   { margin-left: -900px; }
-  		50% { margin-left: -350px; }
-  		100% { margin-left: -350px; }
+  		25% { margin-left: -600px; }
+  		100% { margin-left: -600px; }
 		}
 
 		.envol_nn{
@@ -64,8 +58,8 @@
 
 		@keyframes pied_lift{
 		0% {margin-top:-200px;}
-		10% {margin-top:-200px;}
-		25% {margin-top:-600px;}
+		15% {margin-top:-200px;}
+		30% {margin-top:-600px;}
 		100% {margin-top:-600px;}
 		}
 
@@ -117,13 +111,20 @@
         <pre style="z-index: 3; background-color: white; cursor: pointer;" onclick="fonction_quitter_attention()"><script>document.include('txt/attention.txt');</script></pre>
     </div>
 
-    <div id="deso" style="display: none; cursor: pointer;" onclick="fonction_attaque()">
+    <div id="deso" style="display: none; cursor: pointer;" onclick="fonction_bagarre()">
         <pre style="z-index: 4; background-color: white;"><script>document.include('txt/deso.txt');</script></pre>
     </div>
 
+    <div id="bagarre" style="display: none; cursor: pointer;" onclick="fonction_euh()">
+        <pre style="z-index: 5; background-color: white;"><script>document.include('txt/bagarre.txt');</script></pre>
+    </div>
+
+	<div id="euh" style="display: none; cursor: pointer;" onclick="fonction_attaque()">
+        <pre style="z-index: 6; background-color: white;"><script>document.include('txt/euh.txt');</script></pre>
+    </div>
 
     <div id="attaque" style="display: none;">
-        <pre style="z-index: 5; background-color: white;"><script>document.include('txt/releasenn.txt');</script></pre>
+        <pre style="z-index: 7; background-color: white;"><script>document.include('txt/releasenn.txt');</script></pre>
         <div style="position: absolute; z-index: 7; display: flex; transform:translate(-50%, -50%); margin-top: 28px; width: 200px; justify-content: space-between;">
     		<button onclick="fonction_fuite()" style="cursor: pointer;">fuir</button>
     		<button style="cursor: not-allowed;">périr</button>
@@ -264,8 +265,18 @@ const timer_attention = setTimeout(fonction_attention, 6000);
         document.getElementById("deso").style.display = "block";
     }
 
-    function fonction_attaque(){
+    function fonction_bagarre(){
         document.getElementById("deso").style.display = "none";
+        document.getElementById("bagarre").style.display = "block";
+    }
+
+    function fonction_euh(){
+        document.getElementById("bagarre").style.display = "none";
+        document.getElementById("euh").style.display = "block";
+    }
+
+    function fonction_attaque(){
+        document.getElementById("euh").style.display = "none";
         document.getElementById("attaque").style.display = "block";
     }
 
@@ -274,7 +285,7 @@ const timer_attention = setTimeout(fonction_attention, 6000);
         document.getElementById("nn").classList.add("envol_nn");
         document.getElementById("pied").classList.remove("pied_drop");
         document.getElementById("pied").classList.add("pied_lift");
-        setTimeout(() => {  window.location.href='../BIG CARTO/bigcarto.html'; }, 6000);
+        setTimeout(() => {  window.location.href='../BIG CARTO/bigcarto.html'; }, 5000);
     }
 
 
