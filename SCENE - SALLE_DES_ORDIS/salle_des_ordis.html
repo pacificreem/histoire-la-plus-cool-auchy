@@ -29,7 +29,7 @@ document.include = function (url) {
 
 
         body {
-            font-size: 13px;
+            font-size: 9px;
             font-family: Courier New;
             margin: 0; 
             display: flex; /* Use flexbox to center the content */
@@ -48,13 +48,19 @@ document.include = function (url) {
     
        div{position: absolute;}
 
- @keyframes tracteurmove{
-0% {left:850px;}
-20% {left:850px;}
-100% {left:100px;}
-}
- }
 
+
+ @keyframes text_pancarte{
+0% {text-shadow: 0 0 0 #000000, 0 0 0 #000000;}
+20% {text-shadow: 0 0 0.35em #000000;}
+26% {text-shadow: 0 0 0 #000000, 0 0 0 #000000;}
+27% {text-shadow: 0 0 0.35em #000000;}
+28% {text-shadow: 0 0 0 #000000, 0 0 0 #000000;}
+29% {text-shadow: 0 0 0.35em #000000;}
+35% {text-shadow: 0 0 0 #000000, 0 0 0 #000000;}
+100% {text-shadow: 0 0 0 #000000, 0 0 0 #000000;}
+}
+}
 
   #letout{
     height: 900px; 
@@ -67,11 +73,11 @@ document.include = function (url) {
 
 <!--    ////////////////////////CONSTANT////////////////////   -->
   
-          <a href="../BIG CARTO/bigcarto.html" id="bigcarto" style="cursor:pointer; text-decoration: none; color: black; z-index:3; margin-top: 30px; position: absolute; right: 0%;top: 0% ; margin-right: 30px; transform: translate(0%, 0%);">
-retour à la carto -->
+          <a href="../SCENE - CASCADE/cascade.html" id="bigcarto" style=" font-size:13px; cursor:pointer; text-decoration: none; color: black; z-index:3; margin-top: 30px; position: absolute; right: 0%;top: 0% ; margin-right: 30px; transform: translate(0%, 0%);">
+retour à la cascade -->
   </a>
 
-          <a href="../INVENTAIRE/inventaire.html" id="inventaire" style="cursor:pointer; text-decoration: none; color: black; z-index:3; margin-top: 30px; position: absolute; left: 0%;top: 0% ; margin-left: 30px; transform: translate(0%, 0%);">
+          <a href="../INVENTAIRE/inventaire.html" id="inventaire" style="font-size: 13px; cursor:pointer; text-decoration: none; color: black; z-index:3; margin-top: 30px; position: absolute; left: 0%;top: 0% ; margin-left: 30px; transform: translate(0%, 0%);">
 inventaire
   </a>
 
@@ -79,65 +85,28 @@ inventaire
   <div id="letout">
 
     <div id="paysage">
-        <pre ><script>document.include('txt/paysage.txt');</script>
+        <pre style="top: 60px;"><script>document.include('txt/fond_salle_ordis.txt');</script>
         </pre>
     </div>
 
 
-                <!-- radia -->
+                <!-- ordi -->
 
-    <div id="radia" style="top: 60px; left: -160px; cursor: pointer;" onclick="fonction_radia()">
-        <pre ><script>document.include('txt/radia.txt');</script>
+    <div id="ordi_a_cliquer" style="top: 93px; left: -518px; cursor: pointer;" onclick="ordi()">
+        <pre ><script>document.include('txt/ordi_a_cliquer.txt');</script>
         </pre>
     </div>
 
-                <!-- serpent -->
+                <!-- pancarte -->
 
 
-    <div style="left:220px; top: 190px; ">
-        <pre id="serpent"><script>document.include('txt/serpent1.txt');</script></pre>
+    <div id="pancarte_steeve"style="left:-320px; top: -305px; animation: text_pancarte 30s steps(1) infinite;">
+        <pre><script>document.include('txt/pancarte_steeve.txt');</script></pre>
     </div>
 
-                <!-- hibou -->
-
-    <div style="left:230px; top: -50px; cursor: pointer;" onclick="fonctionNid()">
-        <pre id="nid"><script>document.include('txt/nid.txt');</script></pre>
+    <div id="pancarte_free"style="left:220px; top: -305px; animation: text_pancarte 30s steps(1) infinite; ">
+        <pre><script>document.include('txt/pancarte_free.txt');</script></pre>
     </div>
-
-
-<div id="hibou" style="display: none; cursor: pointer;">
-    <pre  style=" background-color:white; z-index: 5; position:absolute; left: 255px; top:-30px;" onclick="fonctionHibou()" ><script>document.include('txt/oiseau.txt')</script>
-    </pre>
-
-</div>
-
-
-
-                <!-- jus -->
-
-    <div id="pourcent" style="left:-180px; top: -248px; cursor: pointer;" onclick="fonctionPourcent()">
-        <pre><script>document.include('txt/pourcent.txt');</script></pre>
-    </div>
-
-
-  <div id="jus" style="display: none; cursor: pointer;">
-    <pre style=" z-index: 5; background-color: white;" ><script>document.include('txt/jus.txt')</script>
-    </pre>
-</div>
-
-                <!-- manifeste_kefir -->
-
-    <div id="etoile" style="left:-280px; cursor:pointer; top: 220px;" onclick="fonctionEtoile()">
-        <pre ><script>document.include('txt/etoile.txt');</script>
-        </pre>
-    </div>
-
- 
-  <div id="manifeste_kefir" style="display: none; cursor: pointer;">
-    <pre style="background-color: white; z-index: 5; " ><script>document.include('txt/manifeste_kefir.txt')</script>
-    </pre>
-
-  </div>
 
   <!--    ////////////////////////LES POP PAGES////////////////////   -->
                 
