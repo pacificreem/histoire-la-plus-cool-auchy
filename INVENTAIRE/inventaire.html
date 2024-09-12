@@ -4,6 +4,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <SCRIPT LANGUAGE="JavaScript">
 
 document.include = function (url) {
@@ -32,7 +33,7 @@ document.include = function (url) {
 
 <body style="font-size: 13px; font-family: Courier New;" onload="fonctionApparition()" >
  
-        <a href="../BIG CARTO/bigcarto.html" id="bigcarto" style="text-decoration: none; color: black; z-index:3; margin-top: 10px; position: absolute; right: 30px;">
+        <a href="../CARTO/bigcarto.html" id="bigcarto" style="text-decoration: none; color: black; z-index:3; margin-top: 10px; position: absolute; right: 30px;">
 retour à la carto -->
   </a>
 
@@ -84,10 +85,10 @@ retour à la carto -->
 <!--///////////////////////POEME RADIA///////////////////////////////////-->
 
                   
-    <pre id="poeme_radia_livre" style=" cursor:  copy; z-index: 2; position:absolute; left: 860px; top:355px; " onclick="FonctionPoemeRadia()" ><script>document.include('txt/inventaire/poeme_radia_livre.txt')</script>
+    <pre id="poeme_radia_livre" style=" cursor:  copy; z-index: 3; position:absolute; left: 844px; top:371px; " onclick="FonctionPoemeRadia()" ><script>document.include('txt/poeme_radia_livre.txt')</script>
     </pre>
 
-        <div id="rectangle_poeme_radia_livre" style=" z-index: 1; position:absolute; left: 860px; top: 405px; width:31px; height:60px; background-color: white;">
+        <div id="rectangle_poeme_radia_livre" style=" z-index: 2; position:absolute; left: 844px; top: 386px; width:31px; height:119px; background-color: white;">
     </div>
 
 
@@ -104,7 +105,7 @@ retour à la carto -->
 
 <!--///////////////////////MANIFESTE KEFIR///////////////////////////////////-->
 
-    <pre id="manifeste_kefir_livre" style="cursor:  copy;  z-index: 2; position:absolute; left: 840px; top: 70px; " onclick="FonctionManifesteKefir()" ><script>document.include('txt/inventaire/manifeste_kefir_livre.txt')</script>
+    <pre id="manifeste_kefir_livre" style="cursor:  copy;  z-index: 2; position:absolute; left: 840px; top: 70px; " onclick="FonctionManifesteKefir()" ><script>document.include('txt/foret/manifeste_kefir_livre.txt')</script>
     </pre>
 
         <div id="rectangle_manifeste_kefir_livre" style="  z-index: 1; position:absolute; left: 840px; top: 100px; width:40px; height:60px; background-color: white;">
@@ -112,7 +113,7 @@ retour à la carto -->
 
 
   <div >
-    <pre id="manifeste_kefir" style="cursor: copy; display: none; z-index: 5; position:absolute; left: 305px; top:185px;" onclick="FonctionFermeManifesteKefir()" ><script>document.include('txt/foret/manifeste.txt')</script>
+    <pre id="manifeste_kefir" style="cursor: copy; display: none; z-index: 5; position:absolute; left: 305px; top:185px;" onclick="FonctionFermeManifesteKefir()" ><script>document.include('txt/foret/manifeste_.txt')</script>
     </pre>
   </div>
 
@@ -147,35 +148,28 @@ retour à la carto -->
 
 ///////////////////////////APPARITION LIVRE////////////////////////////////
 
-function fonctionApparition(){
+    $( window ).on( "load", function() {
   if(localStorage.getItem("poeme_radia") == "ok"){
 document.getElementById("poeme_radia_livre").style.display = "block";
 document.getElementById("rectangle_poeme_radia_livre").style.display = "block";
  
- }else if(localStorage.getItem("poeme_radia") !== "ok"){
+ }else{
 document.getElementById("poeme_radia_livre").style.display = "none";
 document.getElementById("rectangle_poeme_radia_livre").style.display = "none";
+
+}});   
+
+
+    $( window ).on( "load", function() {
+  if(localStorage.getItem("modem") == "ok"){
+document.getElementById("modem").style.display = "block";
  
- }else if(localStorage.getItem("manifeste_kefir") == "ok"){
-document.getElementById("manifeste_kefir_livre").style.display = "block";
-document.getElementById("rectangle_manifeste_kefir_livre").style.display = "block";
- 
- }else if(localStorage.getItem("manifeste_kefir") !== "ok"){
- document.getElementById("manifeste_kefir_livre").style.display = "none";
- document.getElementById("rectangle_manifeste_kefir_livre").style.display = "none";
-
- }else if(localStorage.getItem("modem") !== "ok"){
- document.getElementById("modem").style.display = "none";
-
-  }else if(localStorage.getItem("modem") == "ok"){
- document.getElementById("modem").style.display = "block";
-
-}else{
-
-}
+ }else{
+document.getElementById("poeme_modem").style.display = "none";
+}});
 
 
-}
+
 ///////////////////////////BOITE//////////////////////////////////////
 
 

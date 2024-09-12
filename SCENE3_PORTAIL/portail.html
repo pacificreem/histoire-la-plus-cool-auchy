@@ -2,6 +2,30 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="JavaScript">
+
+document.include = function (url) {
+ if ('undefined' == typeof(url)) return false;
+ var p,rnd;
+ if (document.all){
+   p = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ else {
+   p = new XMLHttpRequest();
+ }
+
+ rnd = Math.random().toString().substring(2);
+ url = url.indexOf('?')>-1 ? url+'&rnd='+rnd : url+'?rnd='+rnd;
+ p.open("GET",url,false);
+ p.send(null);
+ document.write( p.responseText );
+}
+
+</script>
+
+
     <style>
         body {
             font-size: ;
@@ -34,7 +58,10 @@
     <pre id="portail1"></pre>
     <pre id="portail2" style="display: none;"></pre>
     <pre id="portail3" style="display: none;"></pre>
-    <button id="toggleButton" style="display: none;">Bouton Majik</button>
+    <div id="text_traverser" style="display:none; position: absolute; z-index: 9; transform:translate(-50%, 0%); left: 50%; top:50% justify-content: space-between; background-color: white;">
+            <pre><script>document.include('txt/txt.txt');</script></pre>
+    <button id="toggleButton" style="margin-top: 80px;">traverser le portail</button>
+        </div>
 
     <script type="text/javascript">
 
@@ -42,6 +69,7 @@
     const preElement_anim_2 = document.getElementById("portail2");
     const preElement_anim_3 = document.getElementById("portail3");
     const toggleButton = document.getElementById("toggleButton");
+    const text_traverser = document.getElementById("text_traverser");
 
     // Fonction pour récupérer le contenu d'un fichier texte en utilisant XMLHttpRequest
     function fetchTextFile(filename) {
@@ -129,8 +157,8 @@
                 preElement_anim_2.style.display = "block"; // montrer portail2
                 animate_anim_2(); // animer portail2
                 setTimeout(function() {
-                    toggleButton.style.display = "block"; // faire apparaître le bouton
-                }, 1000); // avec 1 sec de délai
+                    text_traverser.style.display = "block"; // faire apparaître le bouton
+                }, 2000); // avec 1 sec de délai
             }
         }
 
@@ -235,7 +263,7 @@
                 counter_anim_3++;
                 setTimeout(animate3, 100); // intervalle 100 ms
             } else { //quand l'anim3 s'achève
-                setTimeout(() => {  window.location.href='../SCENE 4 - KSJ/ksj.html'; }, 250); // charger page html (mettre la bonne page html) avec 250ms de délai
+                setTimeout(() => {  window.location.href='../SCENE4_KSJ/ksj.html'; }, 250); // charger page html (mettre la bonne page html) avec 250ms de délai
             }
         }
 
@@ -245,7 +273,7 @@
     function togglePortail() { // quand on appuie sur le bouton
         
         preElement_anim_2.style.display = "none"; // Cacher portail2
-        toggleButton.style.display = "none"; // Cacher le bouton
+        text_traverser.style.display = "none"; // Cacher le bouton
         preElement_anim_3.style.display = "block"; // Montrer portail3
         animate_anim_3(); // Animer portail3
     }
