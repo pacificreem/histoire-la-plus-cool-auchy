@@ -262,6 +262,7 @@ document.getElementById("graine_planter").style.display= "block";
 document.getElementById("texte_graine_plantee").style.display= "block";
 document.getElementById("tout_fermer").style.display = "block";
 localStorage.setItem("planter_graine", "ok"); 
+localStorage.setItem("graine_tournesol", "ok"); 
 
 }
 
@@ -269,7 +270,7 @@ localStorage.setItem("planter_graine", "ok");
 function graine_plantee(){
 var graine_plantee = Date.parse(localStorage.graine_plantee);    
 var b = new Date();
-var temps_ecoule = (b - graine_plantee)/60000;
+var temps_ecoule = (b - graine_plantee)/20000;
 console.log(temps_ecoule);
 if(temps_ecoule<= 5){
 document.getElementById("pas_arroser").style.display= "block";
@@ -292,7 +293,7 @@ localStorage.petite_fleur = b;
 function petite_fleur(){
 var petite_fleur = Date.parse(localStorage.petite_fleur);    
 var b = new Date();
-var temps_ecoule = (b - petite_fleur)/60000;
+var temps_ecoule = (b - petite_fleur)/20000;
 console.log(temps_ecoule);
 if(temps_ecoule<= 5){
 document.getElementById("pas_arroser").style.display= "block";
@@ -313,7 +314,7 @@ localStorage.moyenne_fleur = b;
 function moyenne_fleur(){
 var moyenne_fleur = Date.parse(localStorage.moyenne_fleur);    
 var b = new Date();
-var temps_ecoule = (b - moyenne_fleur)/60000;
+var temps_ecoule = (b - moyenne_fleur)/20000;
 console.log(temps_ecoule);
 if(temps_ecoule<= 5){
 document.getElementById("pas_arroser").style.display= "block";
