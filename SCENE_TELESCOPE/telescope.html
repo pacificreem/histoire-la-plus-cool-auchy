@@ -31,7 +31,7 @@ html, body{
     background-color: black;
 color: white;
             font-size: 12px;
-            font-family: Courier New;
+            font-family: Consolas;
             margin: 0; 
             display: flex; 
             justify-content: center; 
@@ -160,6 +160,14 @@ text-shadow: 1px 1px 2px violet, 0 0 1em white, 0 0 0.2em white;
 
 
 
+.bouton{
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    cursor: pointer;
+}
+
+
        pre{position: absolute;
                    top: 50%;
             left: 50%;  
@@ -258,11 +266,39 @@ inventaire
  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/message_margaret.txt')</script></pre>
 </div>
 
-    <button id="bouton_prendre_manifeste" onclick="prendre_manifeste_cyborg()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:115px; transform: translate(-50%, -50%);">trop cool, merci!</button>
+<div id="intro_margaret_1" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/intro_margaret_1.txt')</script></pre>
+ <button id="bouton_intro_1a" class="bouton" onclick="fonctionIntro1()" style="top: 35px; width: 182px; left:-90px;">qu'est ce que tu fais la haut?</button>
+  <button id="bouton_intro_1b" class="bouton" onclick="fonctionIntro1()" style="top: 35px; width: 118px; left:123px;">la lune me parle!!</button>
+</div>
 
-    <button id="bouton_pas_de_poeme" onclick="tout_fermer()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:220px; transform: translate(-50%, -50%);">heu... je n'ai rien sous la main...</button>
+<div id="intro_margaret_2" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/intro_margaret_2.txt')</script></pre>
+ <button id="bouton_intro_2a" class="bouton" onclick="fonctionIntro2()" style="top: 50px; width: 79px; left:-116px;">mais non...</button>
+  <button id="bouton_intro_2b" class="bouton" onclick="fonctionIntro2()" style="top: 50px; width: 149px; left: 86px;">comment tu as fais ça?</button>
+</div>
 
-    <button id="bouton_donner_poeme" onclick="donner_poeme()" style=" display:none; z-index:5; top:80px;left: 0px; position: absolute; width:170px; transform: translate(-50%, -50%);">je connais un poème!</button>
+<div id="intro_margaret_3" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/intro_margaret_3.txt')</script></pre>
+ <button id="bouton_intro_3a" class="bouton" onclick="fonctionIntro3()" style="top: 43px; width: 52px; left:-90px;">okay...</button>
+  <button id="bouton_intro_3b" class="bouton" onclick="fonctionIntro3()" style="top: 43px; width: 96px; left:73px;">dis m'en plus!</button>
+</div>
+
+<div id="intro_margaret_4" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/intro_margaret_4.txt')</script></pre>
+ <button id="bouton_intro_4a" class="bouton" onclick="tout_fermer()" style="top: 104px; width: 68px; left:-105px;">Whouaaa</button>
+  <button id="bouton_intro_4b" class="bouton" onclick="tout_fermer()" style="top: 105px; width: 135px; left:87px;">j'ai pas tout compris mais ça à l'air super!</button>
+</div>
+
+
+
+
+
+    <button id="bouton_prendre_manifeste" onclick="prendre_manifeste_cyborg()" class="bouton" style=" display:none; top:80px; width:115px; ">trop cool, merci!</button>
+
+    <button id="bouton_pas_de_poeme" onclick="tout_fermer()" class="bouton" style=" display:none; top:55px; width:220px;">heu... je n'ai rien sous la main...</button>
+
+    <button id="bouton_donner_poeme" onclick="donner_poeme()" class="bouton" style="display:none; top:55px;  width:181px;">je peux te réciter un poème!</button>
 
 
 <div id="message_margaret_heureuse" style=" display:none;">
@@ -275,19 +311,20 @@ inventaire
 
 
 <div id="manifeste_cyborg" style=" display:none;" onclick="manifeste_cyborg_inventaire()">
-  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/manifeste_cyborg.txt')</script></pre>
+  <pre style="z-index: 4; background-color: black; cursor: pointer;"><script>document.include('../INVENTAIRE/txt/telescope/donna_haraway_page0.txt')</script></pre>
 </div>
 
-
-<div id="phrase_invisible" style=" display:none;">
-  <pre style="z-index: 4; color: black; top:105px; cursor: zoom-in;"><script>document.include('txt/phrase_invisible.txt')</script></pre>
-</div>
 
 
 <div id="margaret_explique" style=" display:none;">
  <pre style="z-index: 4; background-color: black; "><script>document.include('txt/margaret_explique.txt')</script></pre>
+ <button id="bouton_pas_compris_1" onclick="margaret_explique_2()" class="bouton" style="top:39px; left:-79px; width:63px">heuuu...</button>
+  <button id="bouton_pas_compris_2" onclick="margaret_explique_2()" class="bouton" style="top:39px; left:54px; width:113px">j'ai tout compris!</button>
 </div>
 
+<div id="margaret_explique_2" style=" display:none;">
+ <pre style="z-index: 4; background-color: black; "><script>document.include('txt/margaret_explique_2.txt')</script></pre>
+</div>
 <!--///////////////////////PREDICTION///////////////////////////////////-->
 
 <div id="prediction0" style=" display:none;">
@@ -353,23 +390,39 @@ else{
 
 
 function fonctionLune(){
-  if(localStorage.getItem("poeme_radia") == "ok"){
-document.getElementById("message_margaret").style.display = "block";
-document.getElementById("message_margaret_heureuse").style.display = "none";   
-document.getElementById("bouton_donner_poeme").style.display = "block";  
-document.getElementById("bouton_pas_de_poeme").style.display = "none";   
+    if(localStorage.getItem("intro_margaret") !== "ok"){
+document.getElementById("intro_margaret_1").style.display = "block";    
+    }else if(localStorage.getItem("poeme_radia") == "ok"){
+document.getElementById("message_margaret").style.display = "block"; 
+document.getElementById("bouton_donner_poeme").style.display = "block";   
 
 } else if(localStorage.getItem("poeme_radia") == "donne") {
 document.getElementById("message_margaret_heureuse").style.display = "block"; 
 document.getElementById("tout_fermer").style.display = "block"; 
-document.getElementById("message_margaret").style.display = "none";
-document.getElementById("margaret_merci").style.display = "none";
-document.getElementById("bouton_pas_de_poeme").style.display = "none";
 }else{
 document.getElementById("message_margaret").style.display = "block";
-document.getElementById("bouton_pas_de_poeme").style.display = "block";   
-document.getElementById("margaret_merci").style.display = "none";
+document.getElementById("bouton_pas_de_poeme").style.display = "block";  
 }
+}
+
+
+
+function fonctionIntro1(){
+document.getElementById("intro_margaret_2").style.display = "block";     
+document.getElementById("intro_margaret_1").style.display = "none";   
+}
+
+function fonctionIntro2(){
+document.getElementById("intro_margaret_3").style.display = "block";     
+document.getElementById("intro_margaret_2").style.display = "none";   
+}
+
+
+function fonctionIntro3(){
+document.getElementById("intro_margaret_4").style.display = "block";   
+document.getElementById("intro_margaret_3").style.display = "none";  
+localStorage.setItem("intro_margaret", "ok");   
+
 }
 
 
@@ -388,7 +441,6 @@ localStorage.setItem("poeme_radia", "donne");
 function prendre_manifeste_cyborg(){
 localStorage.setItem("manifeste_cyborg", "ok");   
 document.getElementById("manifeste_cyborg").style.display = "block";
-document.getElementById("phrase_invisible").style.display = "block";
 document.getElementById("margaret_merci").style.display = "none";
 document.getElementById("bouton_prendre_manifeste").style.display = "none";
 
@@ -397,8 +449,17 @@ document.getElementById("bouton_prendre_manifeste").style.display = "none";
 
 function manifeste_cyborg_inventaire(){
 document.getElementById("manifeste_cyborg").style.display = "none";
-document.getElementById("phrase_invisible").style.display = "none";
 document.getElementById("margaret_explique").style.display = "block";  
+document.getElementById("bouton_pas_compris_1").style.display = "block";  
+document.getElementById("bouton_pas_compris_2").style.display = "block";  
+}
+
+
+function margaret_explique_2(){
+document.getElementById("bouton_pas_compris_1").style.display = "none";  
+document.getElementById("bouton_pas_compris_2").style.display = "none";  
+document.getElementById("margaret_explique").style.display = "none";  
+document.getElementById("margaret_explique_2").style.display = "block";  
 document.getElementById("tout_fermer").style.display = "block";  
 }
         function tout_fermer(){
@@ -409,6 +470,7 @@ document.getElementById("tout_fermer").style.display = "block";
             document.getElementById("tout_fermer").style.display = "none";   
             document.getElementById("margaret_merci").style.display = "none";
             document.getElementById("prediction0").style.display="none";
+            document.getElementById("intro_margaret_4").style.display="none";
             document.getElementById("prediction1").style.display="none";
             document.getElementById("prediction2").style.display="none";
             document.getElementById("prediction3").style.display="none";
@@ -416,6 +478,8 @@ document.getElementById("tout_fermer").style.display = "block";
             document.getElementById("prediction5").style.display="none";
             document.getElementById("casque_fatoumata").style.display="none";
             document.getElementById("margaret_explique").style.display = "none";  
+document.getElementById("margaret_explique_2").style.display = "NONE";  
+
 
 }
 

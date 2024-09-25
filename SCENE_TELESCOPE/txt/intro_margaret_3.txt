@@ -1,10 +1,8 @@
 +--------------------------------------------------------------+
 |                                                              |
 |                                                              |
-|         C'est sympa d'être sur la lune aujourd'hui,          |
-|             la terre est vraiment belle d'ici...             |
-|             Mais je commence un peu à m'ennuyer              |
-|                    toute seule ici...                        |
+|          J'étais en charge avec mon équipe d'écrire          |
+|              le code du logiciel de navigation.              |
 |                                                              |
 |                                                              |
 |                                                              |

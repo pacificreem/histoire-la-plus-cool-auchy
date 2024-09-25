@@ -27,7 +27,7 @@ document.include = function (url) {
 
         body {
             font-size: 13px;
-            font-family: Courier New;
+            font-family: Consolas;
             margin: 0; 
             display: flex; /* Use flexbox to center the content */
             justify-content: center; /* Center content horizontally */
@@ -135,6 +135,10 @@ to {left:-150px;}
         <pre><script>document.include('txt/fond_champs.txt');</script>
         </pre>
     </div>
+
+
+
+
 
     <div id="cercle" style="left:220px; top: 70px; cursor: pointer;" onclick="fonction_cercle();">
         <pre><script>document.include('txt/cercle.txt');</script></pre>
@@ -263,6 +267,11 @@ to {left:-150px;}
 
 
   <div id="tout_fermer" style="height:100vh; width: 100vw; z-index: 20; cursor: pointer; transform: translate(-50%, -50%); top: 50%; left: 50%; display: none;" onclick="tout_fermer()"></div>
+
+  <!--///////////////////////FERMER PAGE///////////////////////////////////-->
+
+
+  <div id="bloqueur" style="height:100vh; width: 100vw; z-index: 22; transform: translate(-50%, -50%); top: 50%; left: 50%; display: none;"></div>
 
   </div>
 
@@ -606,7 +615,9 @@ sessionStorage.setItem("graine", "ok");}
         function fonction_portail(){
             document.getElementById("click_cercle").style.display = "none";
             document.getElementById("click_portail").style.display = "block";
+            document.getElementById("bloqueur").style.display = "block";  
             setTimeout(() => {  window.location.href='../SCENE3_PORTAIL/portail.html'; }, 5000);
+
 
 
         }

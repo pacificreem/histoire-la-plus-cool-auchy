@@ -30,7 +30,7 @@ document.include = function (url) {
 
         body {
             font-size: 13px;
-            font-family: Courier New;
+            font-family: Consolas;
             margin: 0; 
             display: flex; /* Use flexbox to center the content */
             justify-content: center; /* Center content horizontally */
@@ -51,7 +51,7 @@ document.include = function (url) {
 
  @keyframes tracteurmove{
 0% {left:850px;}
-20% {left:850px;}
+10% {left:850px;}
 100% {left:100px;}
 }
  }
@@ -144,7 +144,7 @@ document.include = function (url) {
 
 
     <div id="tracteur" style="top: 100px;   animation: tracteurmove both;
-  animation-duration: 16s; cursor: pointer;" onclick="fonction_tracteur();">
+  animation-duration: 12s; cursor: pointer;" onclick="fonction_tracteur();">
         <pre ><script>document.include('txt/tracteur.txt');</script>
         </pre>
     </div>
@@ -209,7 +209,7 @@ document.include = function (url) {
         <div id="tracteur_txt" >
             <pre style=" z-index: 9; background-color:white; "><script>document.include('txt/tracteur_txt.txt');</script></pre>
         </div>
-
+            <button onclick="window.location.href = '../SCENE2_CHAMPS/champs.html'" style="z-index: 16; position:absolute; width: 108px; transform: translate(-50%,-50%); top:40px; cursor: pointer;">aller au champs</button>
     </div>
 
 
@@ -347,18 +347,27 @@ document.include = function (url) {
 
 
         function fonction_tracteur(){
+            if(sessionStorage.getItem("intro_ferme") == "ok"){
             document.getElementById("click_tracteur").style.display = "block";
-            setTimeout(() => {  window.location.href='../SCENE2_CHAMPS/champs.html'; }, 5000);
+            document.getElementById("page_quitter").style.display = "block"; 
+
+        }
+            else{}
+
         }
 
 
-const timer_intro = setTimeout(fonction_intro, 15000);
+const timer_intro = setTimeout(fonction_intro, 13000);
 
         function fonction_intro(){
+            if(sessionStorage.getItem("intro_ferme") == "ok"){
+
+            }else{
             document.getElementById("intro").style.display = "block";
             document.getElementById("page_quitter").style.display = "block";
+            sessionStorage.setItem("intro_ferme","ok")
         }
-
+}
 
 
 
@@ -428,6 +437,7 @@ function nettoyer(){
             document.getElementById("os").style.display= "none";
             document.getElementById("nettoyer").style.display= "none";
             document.getElementById("propre").style.display= "none";
+            document.getElementById("click_tracteur").style.display = "none";
 
         }
 
