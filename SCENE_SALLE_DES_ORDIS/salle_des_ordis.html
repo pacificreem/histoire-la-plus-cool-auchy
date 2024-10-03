@@ -166,7 +166,7 @@ inventaire
 
                 <!-- telephone -->
 
-   <div id="telephone" style="" onclick="telephone()">
+   <div id="telephone" style="" onclick="fonctionTelephone()">
         <pre style="top: 53px; left: -12px; cursor: pointer;"><script>document.include('txt/telephone.txt');</script>
         </pre>
     </div>
@@ -272,28 +272,10 @@ inventaire
         ///////////////////////******///////////////////////////////////
 
 
-
-
-
-    ///////////////////////RADIA///////////////////////////////////
-
-
-function fonctionNid(){
-document.getElementById("hibou").style.display = "block";
-document.getElementById("nid").style.display = "none";
-
-}
-
-function fonctionHibou(){
-document.getElementById("hibou").style.display = "none";
-document.getElementById("nid").style.display = "block";
-
-}
-
 ///////////////////////////JUS//////////////////////////////////////
 
-function fonctionPourcent(){
-    if (localStorage.getItem("jus") == "ok") {
+function fonctionTelephone(){
+    if (localStorage.getItem("intro_steeve") == "ok") {
         document.getElementById("pourcent").style.cursor = "auto";
     }
     else{
@@ -304,7 +286,7 @@ localStorage.setItem("jus", "ok");
 }
 
 
-
+sss
 
 </script>
 
