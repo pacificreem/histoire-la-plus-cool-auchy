@@ -67,6 +67,61 @@ document.include = function (url) {
     width: 1300px;
  }
 
+
+#telephone{
+    animation: secousse 20s infinite;
+    animation-delay: 5s;
+}
+
+
+#bipbip{
+    animation: bipbip 20s infinite;
+    animation-delay: 5s;
+    opacity: 0;
+}
+
+@keyframes secousse {
+  0% { rotate: 0deg; }
+  1%  { rotate: 3deg;}
+  2%  { rotate: -3deg;}
+   3%  { rotate: 3deg; }
+  4%  { rotate: -3deg; }
+   5%  {rotate: 3deg; }
+  6%  { rotate: -3deg;}
+  7% { rotate: 0deg; }
+  14% { rotate: 0deg; }
+  15%  { rotate: 3deg;}
+  16%  { rotate: -3deg;}
+   17%  { rotate: 3deg; }
+  18%  { rotate: -3deg; }
+   19%  {rotate: 3deg; }
+  20%  { rotate: -3deg;}
+  21% { rotate: 0deg; }
+  30% { rotate: 0deg; }
+  31%  { rotate: 3deg;}
+  32%  { rotate: -3deg;}
+  33%  { rotate: 3deg; }
+  34%  { rotate: -3deg; }
+  35%  {rotate: 3deg; }
+  36%  { rotate: -3deg;}
+  37% { rotate: 0deg; }
+}
+
+@keyframes bipbip {
+  0% { opacity: 0; }
+  1%  { opacity: 1;}
+  7%  { opacity: 1;}
+  8% { opacity: 0; }
+  14% { opacity: 0; }
+  15%  { opacity: 1;}
+  22% { opacity: 1; }
+  23% { opacity: 0; }
+  30% { opacity: 0; }
+  31%  { opacity: 1;}
+  38% { opacity: 1; }
+  39% { opacity: 0; }
+}
+
     </style>
 </head>
 <body>
@@ -89,14 +144,6 @@ inventaire
         </pre>
     </div>
 
-
-                <!-- ordi -->
-
-    <div id="ordi_a_cliquer" style="top: 93px; left: -518px; cursor: pointer;" onclick="ordi()">
-        <pre ><script>document.include('txt/ordi_a_cliquer.txt');</script>
-        </pre>
-    </div>
-
                 <!-- pancarte -->
 
 
@@ -108,6 +155,29 @@ inventaire
         <pre><script>document.include('txt/pancarte_free.txt');</script></pre>
     </div>
 
+
+                <!-- ordi -->
+
+    <div id="ordi_a_cliquer" style="top: 93px; left: -518px; cursor: pointer;" onclick="ordi()">
+        <pre ><script>document.include('txt/ordi_a_cliquer.txt');</script>
+        </pre>
+    </div>
+
+
+                <!-- telephone -->
+
+   <div id="telephone" style="" onclick="telephone()">
+        <pre style="top: 53px; left: -12px; cursor: pointer;"><script>document.include('txt/telephone.txt');</script>
+        </pre>
+    </div>
+
+
+    <div id="bipbip"> bip<br>&nbsp;&nbsp;bip
+    </div>
+
+
+
+
   <!--    ////////////////////////LES POP PAGES////////////////////   -->
                 
 <!--///////////////////////RADIA///////////////////////////////////-->
@@ -116,11 +186,11 @@ inventaire
                   <!-- demander modem-->
 
 
-    <div id="click_radia" style="display: none;">
+    <div id="click_telephone" style="display: none;">
 
 
-        <div id="radia_txt" >
-            <pre style="background-color: white; z-index: 9; "><script>document.include('txt/message_radia.txt');</script></pre>
+        <div id="intro_1" >
+            <pre style="background-color: white; z-index: 9; "><script>document.include('txt/intro_1.txt');</script></pre>
         </div>
 
         <div id="bouton_radia_non" style=" z-index: 9; top: 75px; display: none; transform:translate(-50%, -50%); left: 50%; width: 200px; text-align: center;">
@@ -194,48 +264,7 @@ inventaire
     ///////////////////////ANIMATION///////////////////////////////////
         ///////////////////////******///////////////////////////////////
 
-    ///////////////////////serpent///////////////////////////////////
-        var text_serpent = [
-            'txt/serpent1.txt',
-            'txt/serpent2.txt',
-            'txt/serpent3.txt',
-            'txt/serpent2.txt',
- 
-                            ];
-        var counter_serpent = 0;
-        var preElement_serpent = document.getElementById("serpent");
-        var textContents_serpent = [];
-
-        // Preload all the text files using AJAX
-        for (var i = 0; i < text_serpent.length; i++) {
-            preloadText_serpent(text_serpent[i], i);
-        }
-
-        // Function to preload a text file and store its content
-        function preloadText_serpent(url, index) {
-            var request_serpent = new XMLHttpRequest();
-            request_serpent.open('GET', url, true);
-            request_serpent.onreadystatechange = function () {
-                if (request_serpent.readyState === XMLHttpRequest.DONE && request_serpent.status === 200) {
-                    textContents_serpent[index] = request_serpent.responseText;
-                }
-            };
-            request_serpent.send();
-        }
-
-    var timer_serpent;
-
-        function animate_serpent() {
-            preElement_serpent.textContent = textContents_serpent[counter_serpent];
-            counter_serpent++;
-            if (counter_serpent >= textContents_serpent.length) {
-                counter_serpent = 0;            }
-        
-        timer_serpent = setTimeout(animate_serpent, 666); // Boom, on démarre un nouvel interval
-
-}
-        // Start the animation after all text files are preloaded
-        animate_serpent();
+  
 
 
     ///////////////////////**********///////////////////////////////////
@@ -248,58 +277,6 @@ inventaire
 
     ///////////////////////RADIA///////////////////////////////////
 
-
-
-
-        function fonction_radia(){
-    if (localStorage.getItem("modem") == "ok") {
-            document.getElementById("click_radia").style.display = "block";
-            document.getElementById("bouton_donne_modem").style.display = "block";
-        
-}else if (localStorage.getItem("modem") == "donne") {
-            document.getElementById("radia_heureuse").style.display = "block";
-            document.getElementById("tout_fermer").style.display = "block";
-
-}else{
-            document.getElementById("click_radia").style.display = "block";
-            document.getElementById("bouton_radia_non").style.display = "block";
-}
-}
-
-
-        function retour_foret(){
-            document.getElementById("click_radia").style.display = "none";            
-        }
-
-
-        function donner_modem(){
-            document.getElementById("click_radia").style.display = "none";
-            document.getElementById("donner_poeme").style.display = "block";
-            document.getElementById("bouton_lire_poeme").style.display = "block";
-            localStorage.setItem("modem", "donne");
-
-        }
-
-
-                function lire_poeme(){
-            document.getElementById("donner_poeme").style.display = "none";
-            document.getElementById("poeme").style.display = "block";
-            document.getElementById("tout_fermer").style.display = "block";
-            localStorage.setItem("poeme_radia", "ok");
-
-
-        }
-
-        function tout_fermer(){
-            document.getElementById("radia_heureuse").style.display = "none";
-            document.getElementById("poeme").style.display = "none";   
-            document.getElementById("tout_fermer").style.display = "none";
-            document.getElementById("jus").style.display = "none";
-            document.getElementById("manifeste_kefir").style.display = "none";
-    }
-
-
-///////////////////////////HIBOU//////////////////////////////////////
 
 function fonctionNid(){
 document.getElementById("hibou").style.display = "block";
@@ -326,20 +303,7 @@ localStorage.setItem("jus", "ok");
 }
 }
 
-///////////////////////////MANIFESTE_kefir//////////////////////////////////////
 
-function fonctionEtoile(){
-    if (localStorage.getItem("manifeste_kefir") == "ok") {
-        document.getElementById("etoile").style.cursor = "auto";
-    }
-    else{
-document.getElementById("manifeste_kefir").style.display = "block";
-document.getElementById("tout_fermer").style.display = "block";
-localStorage.setItem("manifeste_kefir", "ok");
-
-}
-
-}
 
 
 </script>
